@@ -8,6 +8,7 @@
 # ]
 # ///
 
+import argparse
 from tokenizers import Regex, Tokenizer, decoders, pre_tokenizers, processors
 from tokenizers.models import BPE
 
@@ -328,19 +329,24 @@ def test_tokenizer_consistency(hf_tokenizer, mistral_tokenizer):
     
     print("\n=== Test Complete ===\n")
 
-if __name__ == "__main__":
+def convert_tokenizer_and_test(input_dir: str, output_dir: str):
+    """Convert Tekken tokenizer to HuggingFace format and run tests."""
+    import os
+    
+    tekken_path = os.path.join(input_dir, "tekken.json")
+    
     # Convert tokenizer
     print("Converting Tekken tokenizer to HuggingFace format...")
-    hf_tokenizer = convert_tekken_tokenizer("./voxtral-mini/tekken.json")
+    hf_tokenizer = convert_tekken_tokenizer(tekken_path)
     print(f"✅ Conversion complete! Vocab size: {len(hf_tokenizer)}")
     
-    # Save the tokenizer``
-    hf_tokenizer.save_pretrained("hf-tokenizer")
-    print("✅ Tokenizer saved to 'hf-tokenizer' directory")
+    # Save the tokenizer
+    hf_tokenizer.save_pretrained(output_dir)
+    print(f"✅ Tokenizer saved to '{output_dir}' directory")
 
     # Load Mistral tokenizer for comparison
     from mistral_common.tokens.tokenizers.mistral import MistralTokenizer
-    mistral_tokenizer = MistralTokenizer.from_file("./voxtral-mini/tekken.json")
+    mistral_tokenizer = MistralTokenizer.from_file(tekken_path)
     
     # Run consistency tests
     test_tokenizer_consistency(hf_tokenizer, mistral_tokenizer)
@@ -387,3 +393,22 @@ if __name__ == "__main__":
     print(f"HF chat tokens:      {chat_tokens}")
     print(f"Mistral chat tokens: {tokenized.tokens}")
     print(f"Match: {chat_tokens == tokenized.tokens}")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "input_dir",
+        help="Location of Mistral weights, which contains tokenizer.model and model folders",
+    )
+    parser.add_argument(
+        "output_dir",
+        help="Location to write HF model and tokenizer",
+    )
+    
+    args = parser.parse_args()
+    convert_tokenizer_and_test(args.input_dir, args.output_dir)
+
+
+if __name__ == "__main__":
+    main()
