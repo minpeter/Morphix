@@ -1,0 +1,36 @@
+base_model: minpeter/tiny-ko-187m-base-250725
+gate_mode: hidden
+dtype: bfloat16
+experts:
+  - source_model: minpeter/tiny-ko-187m-base-250725
+    positive_prompts:
+      - "<|im_start|>user\nHello, who are you?<|im_end|>"
+      - "<|im_start|>user\nI need help with"
+  - source_model: minpeter/tiny-ko-187m-base-250725
+    positive_prompts:
+      - "As a doctor of medicine,"
+  - source_model: minpeter/tiny-ko-187m-base-250725
+    positive_prompts:
+      - "[Genres: Science Fiction]\n[Tags: humor, old school, sci fi]"
+      - "> get ye flask"
+      - "[Mode: Interactive Storyteller]"
+  - source_model: minpeter/tiny-ko-187m-base-250725
+    positive_prompts:
+      - "<|im_start|>user\nWie geht es dir?<|im_end|>"
+      - "Das ist ein Satz auf Deutsch."
+  - source_model: minpeter/tiny-ko-187m-base-250725
+    positive_prompts:
+      - "<|im_start|>user\nHello, who are you?<|im_end|>"
+      - "<|im_start|>user\nI need help with"
+  - source_model: minpeter/tiny-ko-187m-base-250725
+    positive_prompts:
+      - "As a doctor of medicine,"
+  - source_model: minpeter/tiny-ko-187m-base-250725
+    positive_prompts:
+      - "[Genres: Science Fiction]\n[Tags: humor, old school, sci fi]"
+      - "> get ye flask"
+      - "[Mode: Interactive Storyteller]"
+  - source_model: minpeter/tiny-ko-187m-base-250725
+    positive_prompts:
+      - "<|im_start|>user\nWie geht es dir?<|im_end|>"
+      - "Das ist ein Satz auf Deutsch."
