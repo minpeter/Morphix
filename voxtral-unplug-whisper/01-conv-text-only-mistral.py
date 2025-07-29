@@ -62,7 +62,7 @@ if not os.path.exists(save_dir):
 
 save_file(text_only_tensors, consolidated_save_path)
 
-# Remove "audio" from tekken.json (identical to mistralai/Ministral-8B-Instruct-2410)
+# Remove "audio" from tekken.json
 with open(tekken_path, "r", encoding="utf-8") as f:
     tekken_data = json.load(f)
 tekken_data.pop("audio", None)
