@@ -1,0 +1,12 @@
+base_model: minpeter/Voxtral-Mini-3B-Text-2507-hf
+gate_mode: random
+dtype: bfloat16
+experts:
+  - source_model: minpeter/Voxtral-Mini-3B-Text-2507-hf
+  - source_model: minpeter/Voxtral-Mini-3B-Text-2507-hf
+  - source_model: minpeter/Voxtral-Mini-3B-Text-2507-hf
+  - source_model: minpeter/Voxtral-Mini-3B-Text-2507-hf
+  - source_model: minpeter/Voxtral-Mini-3B-Text-2507-hf
+  - source_model: minpeter/Voxtral-Mini-3B-Text-2507-hf
+  - source_model: minpeter/Voxtral-Mini-3B-Text-2507-hf
+  - source_model: minpeter/Voxtral-Mini-3B-Text-2507-hf

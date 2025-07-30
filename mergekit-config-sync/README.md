@@ -1,0 +1,1 @@
+mergekit-moe --i-understand-this-is-not-useful-without-training moe.yaml ./models/tiny-moe-random-x8-fix
